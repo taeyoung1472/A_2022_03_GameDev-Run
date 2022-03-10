@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     private bool isExit;
     public int score;
     public int bestScore;
-    public TextMesh BestScoreText;
     public TextMesh ScoreText;
     public GameObject overPannel;
     public Text text;
@@ -21,8 +20,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private User user;
     [SerializeField] private ComboSystem comboSystem;
     [SerializeField] private AdManager adManager;
+    [SerializeField] private PoolingManager poolingManager;
     public GameObject GameOverPanel { get { return gameOverPanel; } }
     public ComboSystem ComboSystem { get { return comboSystem; } }
+    public PoolingManager PoolingManager { get { return poolingManager; } }
     public static GameManager Instance;
     public User UserInfo
     {
@@ -39,12 +40,8 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        if (BestScoreText)
-        {
-            bestScore = user.bestScore;
-            tempBest = bestScore;
-            BestScoreText.text = string.Format("BestScore : " + "{0}", bestScore);
-        }
+        bestScore = user.bestScore;
+        tempBest = bestScore;
         adManager.ToggleBannerAd(true);
     }
     private void Update()
@@ -87,12 +84,11 @@ public class GameManager : MonoBehaviour
     public void AddScroe(int _score)
     {
         score += _score;
-        ScoreText.text = string.Format("Score     : {0}", score);
+        ScoreText.text = string.Format("Score : {0}", score);
         if (bestScore < score)
         {
             user.bestScore = score;
             bestScore = score;
-            BestScoreText.text = string.Format("BestScore : " + "{0}", bestScore);
         }
     }
     public void OnApplicationQuit()

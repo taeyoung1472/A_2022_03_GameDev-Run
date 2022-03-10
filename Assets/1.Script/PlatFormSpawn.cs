@@ -5,8 +5,8 @@ using System;
 public class PlatFormSpawn : MonoBehaviour
 {
     [SerializeField] private Transform platFormCarry;
-    [SerializeField] GameObject lastPlatForm;
     [SerializeField] PlatFromSystem ps;
+    GameObject lastPlatForm;
     float lengthTotal = 0;
     void Start()
     {
@@ -14,7 +14,6 @@ public class PlatFormSpawn : MonoBehaviour
     }
     void FirstSpawn()
     {
-
         GameObject obj1 = Instantiate(ps.Get(true), platFormCarry);
         obj1.transform.position = new Vector3(0, 0, lengthTotal);
         lengthTotal += obj1.GetComponent<PlatForm>().Length * 2;
@@ -23,6 +22,7 @@ public class PlatFormSpawn : MonoBehaviour
             lastPlatForm = Instantiate(ps.Get(), platFormCarry);
             lastPlatForm.transform.position = new Vector3(0, 0, lengthTotal);
             lengthTotal += lastPlatForm.GetComponent<PlatForm>().Length * 2;
+            lastPlatForm.GetComponent<PlatForm>().IsLerp = false;
         }
         lengthTotal -= lastPlatForm.GetComponent<PlatForm>().Length * 2;
         StartCoroutine(SpawnPlatForm());
@@ -37,21 +37,26 @@ public class PlatFormSpawn : MonoBehaviour
             lastPlatForm.transform.position = new Vector3(0, 0, temp + lastPlatForm.GetComponent<PlatForm>().Length * 2);
             lengthTotal += lastPlatForm.GetComponent<PlatForm>().Length * 2;
         }
-        print("³¡");
+        lastPlatForm = Instantiate(ps.Get(false,true), platFormCarry);
+        lastPlatForm.transform.position = new Vector3(0, 0, temp + lastPlatForm.GetComponent<PlatForm>().Length * 2);
     }
 }
 [Serializable]
 public class PlatFromSystem
 {
-    [SerializeField] private GameObject defaultPlatForm;
+    [SerializeField] private GameObject defaultPlatForm, office;
     [SerializeField] private GameObject[] jamPlatForm;
     [SerializeField] private GameObject[] colorChangePlatForm;
     PlatFormState ps;
-    public GameObject Get(bool isDefault = false)
+    public GameObject Get(bool isDefault = false, bool isEnd = false)
     {
         if (isDefault)
         {
             return defaultPlatForm;
+        }
+        if (isEnd)
+        {
+            return office;
         }
         switch (UnityEngine.Random.Range(0, 3))
         {
@@ -59,10 +64,6 @@ public class PlatFromSystem
                 return defaultPlatForm;
                 break;
             case 1:
-                //if ()
-                //{
-
-               // }
                 return jamPlatForm[UnityEngine.Random.Range(0,jamPlatForm.Length)];
                 break;
             case 2:

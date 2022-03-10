@@ -7,6 +7,10 @@ public class PlatForm : MonoBehaviour
     [SerializeField] private float length;
     [SerializeField] private Transform[] itemTrans;
     public float Length { get { return length; } }
+    float posY = 100;
+    bool isStop;
+    bool isLerp;
+    public bool IsLerp { set { isLerp = value; } }
     public void Start()
     {
         State[] state = new State[3];
@@ -41,6 +45,22 @@ public class PlatForm : MonoBehaviour
     }
     public void Update()
     {
-        transform.Translate(Vector3.back * Time.deltaTime * 4f);
+        if (!isStop)
+        {
+            transform.Translate(Vector3.back * Time.deltaTime * 4f);
+        }
+        posY = Mathf.Lerp(posY, 0, Time.deltaTime * 10);
+        if(Mathf.Abs(posY) > 0.5f)
+        {
+            transform.position = new Vector3(transform.position.x, posY, transform.position.z);
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        }
+    }
+    public void Stop()
+    {
+        isStop = true;
     }
 }

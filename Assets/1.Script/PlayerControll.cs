@@ -5,13 +5,32 @@ using UnityEngine;
 public class PlayerControll : MonoBehaviour
 {
     [SerializeField] private Vector2 posLimit;
+    [SerializeField] private State state;
     [SerializeField] private float senserVity;
     [SerializeField] SkinnedMeshRenderer renderer;
-    State state = State.first;
+    [SerializeField] private Animator animator;
+    Transform officeChair;
+    bool isEnd;
     float pos;
     public void Start()
     {
         renderer.material = Instantiate(renderer.material);
+        Set();
+    }
+    public void Update()
+    {
+        if (isEnd)
+        {
+            transform.position = Vector3.Lerp(transform.position, officeChair.position, Time.deltaTime);
+            if (Vector3.Distance(transform.position, officeChair.position) < 1)
+            {
+                animator.SetBool("IsEnd", true);
+                transform.position = officeChair.position;
+            }
+        }
+    }
+    public void Set(State _state = State.first)
+    {
         switch (state)
         {
             case State.first:
@@ -27,21 +46,34 @@ public class PlayerControll : MonoBehaviour
     }
     public void Controll(float value)
     {
-        value *= senserVity;
-        pos += value;
-        pos = Mathf.Clamp(pos,posLimit.x,posLimit.y);
-        transform.position = new Vector3(pos, transform.position.y, transform.position.z);
+        if (!isEnd)
+        {
+            value *= senserVity;
+            pos += value;
+            pos = Mathf.Clamp(pos, posLimit.x, posLimit.y);
+            transform.position = new Vector3(pos, transform.position.y, transform.position.z);
+        }
     }
     public void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<Item>()._State == state)
+        if (other.CompareTag("End"))
         {
-            Destroy(other.gameObject);
-            GameManager.Instance.ComboSystem.ComboUpdate();
+            print("End!");
+            officeChair = other.transform;
+            other.GetComponentInParent<PlatForm>().Stop();
+            isEnd = true;
         }
-        else
+        if(other.CompareTag("Item"))
         {
-            GameManager.Instance.ComboSystem.ComboReset();
+            if (other.GetComponent<Item>()._State == state)
+            {
+                Destroy(other.gameObject);
+                GameManager.Instance.ComboSystem.ComboUpdate();
+            }
+            else
+            {
+                GameManager.Instance.ComboSystem.ComboReset();
+            }
         }
     }
 }
