@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+    public void 
     public void FrontAd()
     {
         int rand = Random.Range(0, 100);

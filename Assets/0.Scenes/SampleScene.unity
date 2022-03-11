@@ -319,6 +319,7 @@ GameObject:
   - component: {fileID: 262537774}
   - component: {fileID: 262537776}
   - component: {fileID: 262537775}
+  - component: {fileID: 262537777}
   m_Layer: 5
   m_Name: Setting
   m_TagString: Untagged
@@ -384,6 +385,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262537773}
   m_CullTransparentMesh: 1
+--- !u!114 &262537777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262537773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6cee6724ee79b4dac86a860462a3d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLeft: 1
 --- !u!1001 &310623762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -617,6 +631,7 @@ GameObject:
   - component: {fileID: 561896030}
   - component: {fileID: 561896032}
   - component: {fileID: 561896031}
+  - component: {fileID: 561896033}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -682,6 +697,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561896029}
   m_CullTransparentMesh: 1
+--- !u!114 &561896033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561896029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6cee6724ee79b4dac86a860462a3d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLeft: 0
 --- !u!1 &571095626
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,6 +830,7 @@ GameObject:
   - component: {fileID: 683898151}
   - component: {fileID: 683898153}
   - component: {fileID: 683898152}
+  - component: {fileID: 683898154}
   m_Layer: 5
   m_Name: Gold
   m_TagString: Untagged
@@ -868,6 +897,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683898150}
   m_CullTransparentMesh: 1
+--- !u!114 &683898154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683898150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6cee6724ee79b4dac86a860462a3d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLeft: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,6 +1657,7 @@ GameObject:
   - component: {fileID: 1183541380}
   - component: {fileID: 1183541382}
   - component: {fileID: 1183541381}
+  - component: {fileID: 1183541383}
   m_Layer: 5
   m_Name: Key
   m_TagString: Untagged
@@ -1681,6 +1724,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183541379}
   m_CullTransparentMesh: 1
+--- !u!114 &1183541383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183541379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6cee6724ee79b4dac86a860462a3d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLeft: 0
 --- !u!1 &1185662417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,6 +1748,7 @@ GameObject:
   - component: {fileID: 1185662418}
   - component: {fileID: 1185662420}
   - component: {fileID: 1185662419}
+  - component: {fileID: 1185662421}
   m_Layer: 5
   m_Name: NameSpace
   m_TagString: Untagged
@@ -1757,6 +1814,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185662417}
   m_CullTransparentMesh: 1
+--- !u!114 &1185662421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185662417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6cee6724ee79b4dac86a860462a3d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLeft: 1
 --- !u!137 &1348567742 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7321485264753333482, guid: cbcce3897b360444d9b7b4de2a9aba75, type: 3}
