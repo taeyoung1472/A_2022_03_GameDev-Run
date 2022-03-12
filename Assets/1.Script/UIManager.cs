@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
         int stageStandard = ((GameManager.Instance.UserInfo.stage / 4) * 4) + 1;
         for (int i = 0; i < stagesImage.Length; i++)
         {
-            if ((GameManager.Instance.UserInfo.stage % 4) - 1 < i)
+            if ((GameManager.Instance.UserInfo.stage % 4) - 1 > i)
             {
                 stagesImage[i].sprite = unlocked;
             }
