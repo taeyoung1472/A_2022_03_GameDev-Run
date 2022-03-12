@@ -10,7 +10,7 @@ public class PlatForm : MonoBehaviour
     public static bool isStart;
     float posY = 100;
     bool isStop;
-    bool isLerp;
+    bool isLerp = true;
     public bool IsLerp { set { isLerp = value; } }
     public void Start()
     {
@@ -51,7 +51,7 @@ public class PlatForm : MonoBehaviour
             transform.Translate(Vector3.back * Time.deltaTime * 4f);
         }
         posY = Mathf.Lerp(posY, 0, Time.deltaTime * 10);
-        if(Mathf.Abs(posY) > 0.5f && !isLerp)
+        if(Mathf.Abs(posY) > 0.5f && isLerp)
         {
             transform.position = new Vector3(transform.position.x, posY, transform.position.z);
         }

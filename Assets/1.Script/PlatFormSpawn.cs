@@ -18,7 +18,7 @@ public class PlatFormSpawn : MonoBehaviour
         obj.transform.position = new Vector3(0, 0, lengthTotal);
         obj.GetComponent<PlatForm>().IsLerp = false;
         lengthTotal += obj.GetComponent<PlatForm>().Length * 2;
-        while (lengthTotal < 30)
+        while (lengthTotal < 60)
         {
             lastPlatForm = Instantiate(ps.Get(), platFormCarry);
             lastPlatForm.transform.position = new Vector3(0, 0, lengthTotal);
@@ -31,11 +31,11 @@ public class PlatFormSpawn : MonoBehaviour
     IEnumerator SpawnPlatForm()
     {
         float temp = lengthTotal;
-        while (lengthTotal < 100)
+        while (lengthTotal < 200)
         {
             yield return new WaitUntil(() => lastPlatForm.transform.position.z < temp);
             lastPlatForm = Instantiate(ps.Get(), platFormCarry);
-            lastPlatForm.transform.position = new Vector3(0, 0, temp + lastPlatForm.GetComponent<PlatForm>().Length * 2);
+            lastPlatForm.transform.position = new Vector3(0, -100, temp + lastPlatForm.GetComponent<PlatForm>().Length * 2);
             lengthTotal += lastPlatForm.GetComponent<PlatForm>().Length * 2;
         }
         lastPlatForm = Instantiate(ps.Get(false,true), platFormCarry);
