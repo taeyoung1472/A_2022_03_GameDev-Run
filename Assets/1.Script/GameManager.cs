@@ -21,9 +21,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ComboSystem comboSystem;
     [SerializeField] private AdManager adManager;
     [SerializeField] private PoolingManager poolingManager;
+    [SerializeField] private UIManager uiManager;
     public GameObject GameOverPanel { get { return gameOverPanel; } }
     public ComboSystem ComboSystem { get { return comboSystem; } }
     public PoolingManager PoolingManager { get { return poolingManager; } }
+    public UIManager UIManager { get { return uiManager; } }
     public static GameManager Instance;
     public User UserInfo
     {
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
         bestScore = user.bestScore;
         tempBest = bestScore;
         adManager.ToggleBannerAd(true);
+        uiManager.Set();
     }
     private void Update()
     {
@@ -104,7 +107,14 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
-    public void 
+    public void GameStart()
+    {
+        uiManager.GameStart();
+        if (!PlatForm.isStart)
+        {
+            PlatForm.isStart = true;
+        }
+    }
     public void FrontAd()
     {
         int rand = Random.Range(0, 100);

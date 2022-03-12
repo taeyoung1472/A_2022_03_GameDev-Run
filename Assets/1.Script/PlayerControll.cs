@@ -10,7 +10,7 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] SkinnedMeshRenderer renderer;
     [SerializeField] private Animator animator;
     Transform officeChair;
-    bool isEnd;
+    bool isEnd, isReady;
     float pos;
     public void Start()
     {
@@ -48,6 +48,8 @@ public class PlayerControll : MonoBehaviour
     {
         if (!isEnd)
         {
+            animator.SetBool("IsStart", true);
+            GameManager.Instance.GameStart();
             value *= senserVity;
             pos += value;
             pos = Mathf.Clamp(pos, posLimit.x, posLimit.y);

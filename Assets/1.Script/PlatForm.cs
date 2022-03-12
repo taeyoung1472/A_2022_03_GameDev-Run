@@ -7,6 +7,7 @@ public class PlatForm : MonoBehaviour
     [SerializeField] private float length;
     [SerializeField] private Transform[] itemTrans;
     public float Length { get { return length; } }
+    public static bool isStart;
     float posY = 100;
     bool isStop;
     bool isLerp;
@@ -45,7 +46,7 @@ public class PlatForm : MonoBehaviour
     }
     public void Update()
     {
-        if (!isStop)
+        if (!isStop && isStart)
         {
             transform.Translate(Vector3.back * Time.deltaTime * 4f);
         }

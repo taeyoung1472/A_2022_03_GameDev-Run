@@ -14,9 +14,10 @@ public class PlatFormSpawn : MonoBehaviour
     }
     void FirstSpawn()
     {
-        GameObject obj1 = Instantiate(ps.Get(true), platFormCarry);
-        obj1.transform.position = new Vector3(0, 0, lengthTotal);
-        lengthTotal += obj1.GetComponent<PlatForm>().Length * 2;
+        GameObject obj = Instantiate(ps.Get(true), platFormCarry);
+        obj.transform.position = new Vector3(0, 0, lengthTotal);
+        obj.GetComponent<PlatForm>().IsLerp = false;
+        lengthTotal += obj.GetComponent<PlatForm>().Length * 2;
         while (lengthTotal < 30)
         {
             lastPlatForm = Instantiate(ps.Get(), platFormCarry);
